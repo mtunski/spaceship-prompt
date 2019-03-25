@@ -23,8 +23,8 @@ SPACESHIP_NODE_COLOR="${SPACESHIP_NODE_COLOR="green"}"
 spaceship_node() {
   [[ $SPACESHIP_NODE_SHOW == false ]] && return
 
-  # Show NODE status only for JS-specific folders
-  [[ -f package.json || -d node_modules || -n *.js(#qN^/) ]] || return
+  # Show NODE status only for JS-specific folders OR when enforced in custom .tool-settings
+  spaceship::force_show_tool_status nodejs || [[ -f package.json || -d node_modules || -n *.js(#qN^/) ]] || return
 
   local 'node_version'
 

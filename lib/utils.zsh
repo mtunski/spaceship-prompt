@@ -78,3 +78,7 @@ spaceship::union() {
   typeset -U sections=("$@")
   echo $sections
 }
+
+spaceship::force_show_tool_status() {
+  [[ -f .tool-settings ]] && grep -q "^$tool.*SPACESHIP_PROMPT_SHOW$" ".tool-settings"
+}
